@@ -8,11 +8,12 @@ import (
 
 	"github.com/manifoldco/promptui"
 	"github.com/spf13/cobra"
+	"github.com/spf13/viper"
 )
 
 var setProfileCmd = &cobra.Command{
 	Use:   "setProfile",
-	Short: "A way to set your default aws profile",
+	Short: "A way to set the aws profile this program uses",
 	Run:   setProfile,
 }
 
@@ -44,7 +45,10 @@ func setProfile(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	fmt.Println("selectedProfile:", selectedProfile)
+	viper.Set("aws_profile", selectedProfile)
 
-	// TODO: setup config file and set profile in config
+	err = viper.WriteConfig()
+	if err != nil {
+		fmt.Println("something went wrong writing the config file", err)
+	}
 }
