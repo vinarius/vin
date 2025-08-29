@@ -9,7 +9,6 @@ import (
 	"github.com/spf13/viper"
 )
 
-var configFile string
 var rootCmd = &cobra.Command{
 	Use:   "vin",
 	Short: "My tools",
