@@ -1,6 +1,6 @@
 package main
 
-import "vin/cmd"
+import "github.com/vinarius/vin/cmd"
 
 func main() {
 	cmd.Execute()
