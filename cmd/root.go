@@ -23,7 +23,6 @@ func Execute() {
 
 func init() {
 	cobra.OnInitialize(initConfig)
-
 	rootCmd.PersistentFlags().String("aws-profile", "", "Specify the AWS profile to use")
 	viper.BindPFlag("aws_profile", rootCmd.PersistentFlags().Lookup("aws-profile"))
 }
