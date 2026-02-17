@@ -14,12 +14,12 @@ import (
 	"github.com/google/uuid"
 	"github.com/guregu/dynamo/v2"
 	"github.com/spf13/cobra"
-	"github.com/vinarius/vin/cmd"
+	"github.com/vinarius/vin/cmd/tms"
 )
 
 var watchCmd = &cobra.Command{
 	Use:   "watch",
-	Short: "Watch a camera's mqtt messages on tms",
+	Short: "Watch mqtt messages. Defaults to watching all topics.",
 	Run: func(cmd *cobra.Command, args []string) {
 		defer func() {
 			fmt.Println()
@@ -166,10 +166,8 @@ var watchCmd = &cobra.Command{
 
 func init() {
 	watchCmd.Flags().String(Topic.String(), "", "Comma separated topic(s) you want to listen to")
-	watchCmd.Flags().String(CameraId.String(), "", "Listen to a camera's topics")
-	watchCmd.Flags().String(GroupId.String(), "", "Listen to a group's topics")
-	watchCmd.Flags().String(ProjectId.String(), "", "Listen to a project's topics")
-	watchCmd.Flags().String(Stage.String(), "", "Specify a stage to target sandbox environments")
-	watchCmd.Flags().Bool(All.String(), false, "Listen to all topics in TMS")
-	cmd.TmsCmd.AddCommand(watchCmd)
+	watchCmd.Flags().String(CameraId.String(), "", "Listen to a camera's topics (comma separated camera ids)")
+	watchCmd.Flags().String(ProjectId.String(), "", "Listen to a project's topics (comma separated project ids)")
+	watchCmd.Flags().String(Stage.String(), "", "Specify a stage to target sandbox environments (ie to target the iot-ue2-stateful-table-mark table, specify --stage \"mark\")")
+	tms.TmsCmd.AddCommand(watchCmd)
 }

@@ -1,7 +1,8 @@
-package cmd
+package tms
 
 import (
 	"github.com/spf13/cobra"
+	"github.com/vinarius/vin/cmd"
 )
 
 var TmsCmd = &cobra.Command{
@@ -13,5 +14,5 @@ var TmsCmd = &cobra.Command{
 }
 
 func init() {
-	rootCmd.AddCommand(TmsCmd)
+	cmd.RootCmd.AddCommand(TmsCmd)
 }

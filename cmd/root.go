@@ -9,13 +9,13 @@ import (
 	"github.com/spf13/viper"
 )
 
-var rootCmd = &cobra.Command{
+var RootCmd = &cobra.Command{
 	Use:   "vin",
 	Short: "My tools",
 }
 
 func Execute() {
-	err := rootCmd.Execute()
+	err := RootCmd.Execute()
 	if err != nil {
 		os.Exit(1)
 	}
@@ -23,8 +23,8 @@ func Execute() {
 
 func init() {
 	cobra.OnInitialize(initConfig)
-	rootCmd.PersistentFlags().String("aws-profile", "", "Specify the AWS profile to use")
-	viper.BindPFlag("aws_profile", rootCmd.PersistentFlags().Lookup("aws-profile"))
+	RootCmd.PersistentFlags().String("aws-profile", "", "Specify the AWS profile to use")
+	viper.BindPFlag("aws_profile", RootCmd.PersistentFlags().Lookup("aws-profile"))
 }
 
 func initConfig() {

@@ -18,7 +18,7 @@ var setProfileCmd = &cobra.Command{
 }
 
 func init() {
-	rootCmd.AddCommand(setProfileCmd)
+	RootCmd.AddCommand(setProfileCmd)
 }
 
 func setProfile(cmd *cobra.Command, args []string) {
@@ -39,7 +39,6 @@ func setProfile(cmd *cobra.Command, args []string) {
 	}
 
 	_, selectedProfile, err := prompt.Run()
-
 	if err != nil {
 		fmt.Printf("Prompt failed %v\n", err)
 		return

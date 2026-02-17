@@ -11,10 +11,8 @@ type flag int
 const (
 	Topic flag = iota
 	CameraId
-	GroupId
 	ProjectId
 	Stage
-	All
 )
 
 func (f flag) String() string {
@@ -23,14 +21,10 @@ func (f flag) String() string {
 		return "topic"
 	case CameraId:
 		return "camera-id"
-	case GroupId:
-		return "group-id"
 	case ProjectId:
 		return "project-id"
 	case Stage:
 		return "stage"
-	case All:
-		return "all"
 	default:
 		return "Unknown watchflag value received"
 	}
@@ -76,21 +70,6 @@ func getFlag(cmd *cobra.Command) (*GetFlagOutput, error) {
 		}, nil
 	}
 
-	groupId, err := cmd.Flags().GetString(GroupId.String())
-	if err != nil {
-		fmt.Printf("error getting %s flag: %s\n", GroupId.String(), err)
-		return nil, err
-
-	}
-
-	if groupId != "" {
-		return &GetFlagOutput{
-			flag:  GroupId,
-			stage: stage,
-			value: groupId,
-		}, nil
-	}
-
 	projectId, err := cmd.Flags().GetString(ProjectId.String())
 	if err != nil {
 		fmt.Printf("error getting %s flag: %s\n", ProjectId.String(), err)
@@ -105,23 +84,5 @@ func getFlag(cmd *cobra.Command) (*GetFlagOutput, error) {
 		}, nil
 	}
 
-	all, err := cmd.Flags().GetBool(All.String())
-	if err != nil {
-		fmt.Printf("error getting %s flag: %s\n", All.String(), err)
-		return nil, err
-	}
-
-	if all {
-		return &GetFlagOutput{
-			flag:  All,
-			stage: stage,
-			value: "",
-		}, nil
-	}
-
 	return nil, nil
-}
-
-func flagToPtr(f flag) *flag {
-	return &f
 }

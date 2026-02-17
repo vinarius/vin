@@ -21,7 +21,7 @@ var cleanCfnStacksCmd = &cobra.Command{
 }
 
 func init() {
-	rootCmd.AddCommand(cleanCfnStacksCmd)
+	RootCmd.AddCommand(cleanCfnStacksCmd)
 
 	// TODO: add support for stack name filtering
 	// TODO: add support for dry run
@@ -33,7 +33,6 @@ func cleanCfnStacks(cmd *cobra.Command, args []string) {
 	ctx := context.TODO()
 
 	config, err := config.LoadDefaultConfig(ctx)
-
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -46,7 +45,6 @@ func cleanCfnStacks(cmd *cobra.Command, args []string) {
 			cfnTypes.StackStatusUpdateComplete,
 		},
 	})
-
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -62,7 +60,6 @@ func cleanCfnStacks(cmd *cobra.Command, args []string) {
 			_, err := cloudformationClient.DeleteStack(ctx, &cloudformation.DeleteStackInput{
 				StackName: aws.String(stackName),
 			})
-
 			if err != nil {
 				fmt.Printf("Error deleting stack '%v': %v\n", stackName, err)
 				continue
