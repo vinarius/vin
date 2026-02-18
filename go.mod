@@ -1,4 +1,4 @@
-module github.com/vinarius/vin
+module github.com/vinarius/vin/v2
 
 go 1.26.0
 

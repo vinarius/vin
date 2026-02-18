@@ -9,7 +9,7 @@ import (
 	"github.com/manifoldco/promptui"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
-	"github.com/vinarius/vin/cmd/configure"
+	"github.com/vinarius/vin/v2/cmd/configure"
 )
 
 var profileCmd = &cobra.Command{

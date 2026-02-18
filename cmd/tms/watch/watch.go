@@ -14,7 +14,7 @@ import (
 	"github.com/google/uuid"
 	"github.com/guregu/dynamo/v2"
 	"github.com/spf13/cobra"
-	"github.com/vinarius/vin/cmd/tms"
+	"github.com/vinarius/vin/v2/cmd/tms"
 )
 
 var watchCmd = &cobra.Command{

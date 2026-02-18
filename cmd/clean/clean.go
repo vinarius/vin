@@ -2,7 +2,7 @@ package clean
 
 import (
 	"github.com/spf13/cobra"
-	"github.com/vinarius/vin/cmd"
+	"github.com/vinarius/vin/v2/cmd"
 )
 
 var CleanCmd = &cobra.Command{

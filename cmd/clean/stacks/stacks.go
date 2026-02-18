@@ -14,8 +14,8 @@ import (
 	"github.com/aws/aws-sdk-go-v2/service/cloudformation"
 	cfnTypes "github.com/aws/aws-sdk-go-v2/service/cloudformation/types"
 	"github.com/spf13/cobra"
-	"github.com/vinarius/vin/cmd/clean"
-	"github.com/vinarius/vin/utils"
+	"github.com/vinarius/vin/v2/cmd/clean"
+	"github.com/vinarius/vin/v2/utils"
 )
 
 const (

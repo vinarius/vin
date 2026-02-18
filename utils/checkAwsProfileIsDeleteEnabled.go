@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/vinarius/vin/constants"
+	"github.com/vinarius/vin/v2/constants"
 )
 
 func CheckAwsProfileIsDeleteEnabled() {

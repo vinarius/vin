@@ -7,8 +7,8 @@ import (
 	"strings"
 
 	"github.com/guregu/dynamo/v2"
-	"github.com/vinarius/vin/constants"
-	"github.com/vinarius/vin/models"
+	"github.com/vinarius/vin/v2/constants"
+	"github.com/vinarius/vin/v2/models"
 )
 
 func getTopicsFromTopicFlag(topicRaw string) []string {
