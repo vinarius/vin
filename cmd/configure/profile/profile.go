@@ -1,4 +1,4 @@
-package cmd
+package profile
 
 import (
 	"fmt"
@@ -9,19 +9,20 @@ import (
 	"github.com/manifoldco/promptui"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
+	"github.com/vinarius/vin/cmd/configure"
 )
 
-var setProfileCmd = &cobra.Command{
-	Use:   "setProfile",
+var profileCmd = &cobra.Command{
+	Use:   "profile",
 	Short: "A way to set the aws profile this program uses",
-	Run:   setProfile,
+	Run:   profile,
 }
 
 func init() {
-	RootCmd.AddCommand(setProfileCmd)
+	configure.ConfigureCmd.AddCommand(profileCmd)
 }
 
-func setProfile(cmd *cobra.Command, args []string) {
+func profile(cmd *cobra.Command, args []string) {
 	listProfilesCommand := exec.Command("aws", "configure", "list-profiles")
 
 	listProfilesOutputRaw, err := listProfilesCommand.Output()

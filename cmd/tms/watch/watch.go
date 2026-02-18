@@ -19,7 +19,7 @@ import (
 
 var watchCmd = &cobra.Command{
 	Use:   "watch",
-	Short: "Watch mqtt messages. Defaults to watching all topics.",
+	Short: "Watch mqtt messages. Defaults to watching all topics",
 	Run: func(cmd *cobra.Command, args []string) {
 		defer func() {
 			fmt.Println()
