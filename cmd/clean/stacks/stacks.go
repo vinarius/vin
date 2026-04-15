@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"os"
 	"runtime"
+	"slices"
+	"strings"
 	"sync"
 	"time"
 
@@ -94,9 +96,25 @@ var (
 				for _, stackSummary := range listStacksOutput.StackSummaries {
 					stackName := stackSummary.StackName
 
-					if *stackName != "CDKToolkit" {
-						stackChan <- stackName
+					stackNamesToExclude := []string{
+						"CDKToolkit",
 					}
+
+					stackPrefixesToExclude := []string{
+						"StackSet",
+					}
+
+					if slices.ContainsFunc(stackPrefixesToExclude, func(prefix string) bool {
+						return strings.HasPrefix(*stackName, prefix)
+					}) {
+						continue
+					}
+
+					if slices.Contains(stackNamesToExclude, *stackName) {
+						continue
+					}
+
+					stackChan <- stackName
 				}
 			}
 
